@@ -1,0 +1,30 @@
+.editorContainer {
+  position: relative;
+  padding: 24px;
+  min-height: 480px;
+  border-right: 2px solid #d4d4d8;
+  border-left: 2px solid #d4d4d8;
+  border-bottom: 2px solid #d4d4d8;
+  border-bottom-right-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+  background-color: #ffffff;
+}
+
+.contentEditable {
+  outline: none;
+  box-shadow: none;
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: none;
+  }
+}
+
+.placeholder {
+  position: absolute;
+  color: #888888;
+  top: 24px;
+  left: 24px;
+  pointer-events: none;
+  user-select: none;
+}

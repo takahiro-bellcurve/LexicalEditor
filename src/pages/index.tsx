@@ -1,9 +1,18 @@
 import Head from "next/head";
+import { useState } from "react";
 import { Inter } from "@next/font/google";
+import { useForm } from "react-hook-form";
+import { Editor } from "@/components/Editor/Editor";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+  const [text, setValueText] = useState("");
+  const { register, handleSubmit } = useForm();
+  const onSubmit = (data: any) => {
+    data = { ...data, text };
+    alert(JSON.stringify(data));
+  };
   return (
     <>
       <Head>
@@ -13,7 +22,20 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <h1>Lexical</h1>
+        <h1 className="text-center text-4xl py-12">Lexical Markdown Editor</h1>
+        <form className="w-3/4 mx-auto" onSubmit={handleSubmit(onSubmit)}>
+          <div>
+            <Editor changeText={setValueText} />
+          </div>
+          <input
+            {...register("title")}
+            className="w-full h-12 rounded-md border-gray-300 border-2 my-6 p-2"
+          />
+          <input
+            type="submit"
+            className="w-32 bg-teal-700 h-12 text-white font-bold rounded-md hover:bg-teal-600"
+          />
+        </form>
       </main>
     </>
   );
